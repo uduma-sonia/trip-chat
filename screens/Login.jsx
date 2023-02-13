@@ -24,7 +24,7 @@ export default function Login({ navigation }) {
       Keyboard.dismiss();
       setIsSubmitting(true);
       signInWithEmailAndPassword(auth, email, password)
-        .then((arg) => console.log("SUCCESSFUL", arg))
+        .then((arg) => console.log("SUCCESSFUL"))
         .catch((err) => {
           Alert.alert("Login error", err.message);
         })

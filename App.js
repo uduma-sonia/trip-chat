@@ -26,7 +26,7 @@ function ChatStack() {
   return (
     <Stack.Navigator
       initialRouteName="Home"
-      screenOptions={{ headerShown: true }}
+      screenOptions={{ headerShown: false }}
     >
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Chat" component={Chat} />
