@@ -6,6 +6,8 @@ import {
   View,
   StyleSheet,
   SafeAreaView,
+  Share,
+  Alert,
 } from "react-native";
 import {
   collection,
@@ -14,17 +16,12 @@ import {
   query,
   onSnapshot,
 } from "firebase/firestore";
-import { signOut } from "firebase/auth";
 import { auth, database } from "../config/firebase";
 import { FontAwesome } from "@expo/vector-icons";
 
 export default function Chat({ route, navigation }) {
   const [messages, setMessages] = useState([]);
   const { roomName } = route.params;
-
-  const onSignOut = () => {
-    signOut(auth).catch((error) => console.log(error));
-  };
 
   useLayoutEffect(() => {
     const collectionRef = collection(database, roomName);
@@ -68,6 +65,26 @@ export default function Chat({ route, navigation }) {
     );
   };
 
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: "Still working on it",
+        url: "https://sohnya.dev/",
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          // shared with activity type of result.activityType
+        } else {
+          // shared
+        }
+      } else if (result.action === Share.dismissedAction) {
+        // dismissed
+      }
+    } catch (error) {
+      Alert.alert(error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
@@ -85,8 +102,8 @@ export default function Chat({ route, navigation }) {
 
           <Text style={{ color: "#ffffff", fontSize: 16 }}>{roomName}</Text>
 
-          <TouchableOpacity onPress={() => onSignOut()}>
-            <Text style={{ color: "#ffffff", fontWeight: "600" }}>Logout</Text>
+          <TouchableOpacity onPress={onShare}>
+            <FontAwesome name="share-square-o" color="#ffffff" size={24} />
           </TouchableOpacity>
         </View>
       </SafeAreaView>
