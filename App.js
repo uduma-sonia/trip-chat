@@ -65,10 +65,10 @@ function RootNavigator() {
         style={{
           flex: 1,
           justifyContent: "center",
-          alignItems: "Center",
+          alignItems: "center",
         }}
       >
-        <ActivityIndicator size="large" />
+        <ActivityIndicator size="large" color="#48c72c" />
       </View>
     );
   }
