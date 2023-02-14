@@ -9,7 +9,7 @@ export default {
     icon: "./assets/icon.png",
     userInterfaceStyle: "light",
     splash: {
-      image: "./assets/splash.png",
+      image: "./assets/trip_icon.png",
       resizeMode: "contain",
       backgroundColor: "#ffffff",
     },
@@ -22,7 +22,7 @@ export default {
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: "./assets/adaptive-icon.png",
+        foregroundImage: "./assets/trip_icon.png",
         backgroundColor: "#FFFFFF",
       },
     },

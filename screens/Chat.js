@@ -19,7 +19,7 @@ import { auth, database } from "../config/firebase";
 import { FontAwesome } from "@expo/vector-icons";
 
 export default function Chat({ route, navigation }) {
-  const [messages, setMessages] = useState();
+  const [messages, setMessages] = useState([]);
   const { roomName } = route.params;
 
   const onSignOut = () => {
@@ -83,8 +83,10 @@ export default function Chat({ route, navigation }) {
             </Text>
           </TouchableOpacity>
 
+          <Text style={{ color: "#ffffff", fontSize: 16 }}>{roomName}</Text>
+
           <TouchableOpacity onPress={() => onSignOut()}>
-            <Text style={{ color: "#ffffff" }}>Logout</Text>
+            <Text style={{ color: "#ffffff", fontWeight: "600" }}>Logout</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
